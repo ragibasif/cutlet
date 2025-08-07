@@ -98,7 +98,7 @@ const (
 	NEW
 	IMPORT
 	FROM
-	FN
+	FUN
 	IF
 	ELSE
 	FOREACH
@@ -115,7 +115,7 @@ const (
 )
 
 var keywords = map[string]TokenKind{
-	"fn":      FN,
+	"fun":     FUN,
 	"let":     LET,
 	"const":   CONST,
 	"class":   CLASS,
@@ -202,8 +202,8 @@ func TokenKindString(kind TokenKind) string {
 		return "import"
 	case FROM:
 		return "from"
-	case FN:
-		return "fn"
+	case FUN:
+		return "fun"
 	case IF:
 		return "if"
 	case ELSE:
@@ -223,7 +223,7 @@ func TokenKindString(kind TokenKind) string {
 	}
 }
 
-func LookupIdententifier(identifier string) TokenKind {
+func LookupIdentifier(identifier string) TokenKind {
 	if token, ok := keywords[identifier]; ok {
 		return token
 	}
